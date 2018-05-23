@@ -24,7 +24,7 @@ iris_test <- iris_df %>%
 # the network should be trained on the subset of training data, and the number of perceptrons
 # in the hidden layer is set to some value, where larger values will merit greater accuracy,
 # but slower performance.
-iris_classifier <- nnet(Species ~ ., data = iris_subset, size = 10)
+iris_classifier <- nnet(Species ~ ., data = iris_subset, size = HIDDEN_LAYER_SIZE)
 
 # Output the predictions for the test set to this table.
 predictions <- data.frame(iris_test$Species, predict(iris_classifier, iris_test, type = "class"))
