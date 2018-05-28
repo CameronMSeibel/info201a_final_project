@@ -1,8 +1,8 @@
 # Cameron Seibel, INFO 201
 # NNET Proof of Concept
 #
-# This file serves as a proof of concept for using the nnet package to solve classification problems
-# by exploring one of R's given datasets, iris.
+# This file serves as a proof of concept for using the nnet package to solve classification 
+# problems by exploring one of R's given datasets, iris.
 
 # Be sure that nnet is already installed on your machine!
 library(nnet)
@@ -33,8 +33,6 @@ n_wrong <- predictions %>%
   filter(Species != Prediction) %>% 
   count()
 print(paste("The network was able to classify the data with", n_wrong, "percent innaccuracy."))
-
-
 
 
 
