@@ -9,7 +9,7 @@ library(dplyr)
 
 # For this, we will use data from the World Bank, probably data we'll end up using for the 
 # final project - be sure working directory is set to source file location.
-gdp_data <- read.csv("../data/gdp_per_capita.csv", stringsAsFactors = F)
+gdp_data <- read.csv("../data/input/gdp_per_capita.csv", stringsAsFactors = F)
 
 # Selecting a random country for this analysis, reformatting the data.
 data_vector <- as.numeric(as.vector(gdp_data[gdp_data$Country.Name == "Burundi", c(-1, -2, -3, -4)]))
