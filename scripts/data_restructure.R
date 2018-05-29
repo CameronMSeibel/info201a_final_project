@@ -6,16 +6,20 @@
 gdp <- read.csv("../data/input/gdp_per_capita.csv", stringsAsFactors = F)
 
 countries <- gdp$Country.Name
+estimate_range <- 2019:2039
+output_df <- data.frame(year = year_range)
 
-data_vector <- as.numeric(as.vector(gdp_data[gdp_data$Country.Name == "Burundi", c(-1, -2, -3, -4)]))
-year_range <- 1960:2017
-select_data <- data.frame(gdp = data_vector, year = 1960:2017)
-select_data <- select_data %>% 
-  filter(!is.na(gdp))
+# For each country, model their GDP and estimate values for some time into the future.
+for(country in countries){
+  data_vector <- as.numeric(as.vector(gdp_data[gdp_data$Country.Name == country, -4:-1]))
+  year_range <- 1960:2017
+  select_data <- data.frame(gdp = data_vector, year = year_range)
+  select_data <- select_data[!is.na(select_data$gdp), ]
+  
+  model <- lm(gdp ~ year, data = select_data)
+  predictions <- data.frame(paste0(country, "_GDP") = predict.lm(model, newdata = data.frame(year = estimate_range)), 
+                            year = estimate_range)
+  output_df <- merge(output_df, predictions) # Both DFs have a year col, other cols are unique
+}
 
-# Our model describes GDP as a function of year, which is based on our data for Burundi.
-model <- lm(gdp ~ year, data = select_data)
-
-# Using the predict.lm method for a data frame with a year column predicts values for each year.
-predictions <- data.frame(gdp = predict.lm(model, newdata = data.frame(year = 2018:2038)), 
-                          year = 2018:2038)
+write.csv("../data/output/gdp_estimates.csv")
