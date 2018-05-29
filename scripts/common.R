@@ -10,9 +10,6 @@ year_range <- 1960:2017
 estimate_range <- 2019:2119
 
 
-
-
-
 # clean_string takes a string, str, as a parameter.
 # Returns a "cleaned" version of the string, replacing problematic characters as needed.
 clean_string <- function(str){
