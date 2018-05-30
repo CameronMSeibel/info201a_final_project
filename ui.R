@@ -1,6 +1,6 @@
 library(shiny)
 
-source("./scripts/current.R")
+source("scripts/current.R")
 
 # Define UI for application that draws a linePlot
 shinyUI(fluidPage(
