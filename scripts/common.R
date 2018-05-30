@@ -3,7 +3,7 @@
 # This file will define a number of constants and functions shared between the scripts for
 # wrangling and analysis of data.
 
-source("scripts/developed_countries.R")
+source("developed_countries.R")
 
 # Range of the data set; although there is a better way to do this, I won't bother.
 year_range <- 1960:2017

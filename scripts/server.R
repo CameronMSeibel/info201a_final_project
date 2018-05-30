@@ -1,6 +1,6 @@
 library(shiny)
 
-source("scripts/current.R")
+source("current.R")
 
 # Define server logic required to draw a line chart
 shinyServer(function(input, output) {
