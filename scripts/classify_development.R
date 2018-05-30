@@ -7,7 +7,6 @@ library(nnet)
 
 # Be sure working directory is set to source file location.
 source("common.R")
-source("developed_countries.R")
 
 gdp <- read.csv("../data/input/gdp_per_capita.csv")
 le <- read.csv("../data/input/total_life_expectancy.csv")
@@ -17,15 +16,6 @@ le_estimate <- read.csv("../data/output/life_expectancy_estimates.csv", stringsA
 
 # Could try with other values, but small values consistently only classified "underdeveloped"
 hidden_layer_size = 100
-
-# initial_classification "computes" the classification of a country as developed or underdeveloped
-# given the name of the country. 
-initial_classification <- function(country){
-  if(country %in% developed_countries){
-    return("Developed")
-  }
-  return("Underdeveloped")
-}
 
 gdp <- gdp %>%
   select(Country.Name, X2016) %>% 

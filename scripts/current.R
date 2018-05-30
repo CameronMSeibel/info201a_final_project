@@ -7,7 +7,7 @@ source("common.R")
 
 gdp <- read.csv("../data/input/gdp_per_capita.csv")
 
-gdp <- gdp %>% mutate(category = ifelse(X2016 >= 12000, "Developed", "Developing"))
+gdp <- gdp %>% mutate(category = sapply(Country.Name, initial_classification))
 
 g <- list(
   showframe = FALSE,
