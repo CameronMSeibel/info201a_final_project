@@ -108,7 +108,8 @@ ui_3 <- navbarPage("GDP",
       ),
       
       mainPanel(
-        plotOutput('prediction')
+        plotOutput('prediction'),
+        textOutput('prediction_analysis')
       )
     )
   )
