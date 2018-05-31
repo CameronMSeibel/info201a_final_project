@@ -1,10 +1,14 @@
+# Maxwell Warchol
+# Functions related to the creation and utilization of the prediction map
 library(dplyr)
 library(ggplot2)
 library(maps)
 
 
+# Processes data from the models predictions so that it can be used with the maps package
 make_prediction_map <- function(year_of_interest)
 {
+  # Year is input from sliders
   prediction_data <- read.csv("../data/output/development_classifications.csv", stringsAsFactors = FALSE)
   prediction_data <- prediction_data %>% filter(year == year_of_interest) %>% select(-X, -year)
   prediction_data <- data.frame(t(prediction_data))
@@ -38,6 +42,9 @@ make_prediction_map <- function(year_of_interest)
 return(prediction_map)
 }
 
+
+
+# Certain country names are retrieved in a different format. These are reformatted so they can be mapped.
 fix_country_names <- function(names)
 {
   names[names$country == "Iran. Islamic Rep.", "country"] <- "Iran"
@@ -57,11 +64,6 @@ fix_country_names <- function(names)
   names[names$country == "United States", "country"] <- "USA"
   names[names$country == "Venezuela. RB", "country"] <- "Venezuela"
   names[names$country == "Yemen. Rep.", "country"] <- "Yemen"
-  
-  
-  
-  
-  
   
   return(names)
   
