@@ -35,4 +35,11 @@ to reveal trends in geography and speed of development. The projections show a c
     development are New Zealand (2023), and South Korea (2073)."
     
   })
+  
+  
+  output$current_analysis <- renderText({
+    "The above map displays information on the curent state of the world in terms of economic
+    development. You may mouse over countries to view information about their current status of
+    development, either developed or developing, and their GDP per capita."
+  })
 })

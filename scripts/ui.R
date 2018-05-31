@@ -86,7 +86,8 @@ ui_3 <- navbarPage("GDP",
     "Current",
     tabPanel(
       "Current GDP Map",
-      plotlyOutput("map")
+      plotlyOutput("map"),
+      textOutput("current_analysis")
     ),
     tabPanel(
       "GDP Comparisons",
@@ -108,7 +109,8 @@ ui_3 <- navbarPage("GDP",
       ),
       
       mainPanel(
-        plotOutput('prediction')
+        plotOutput('prediction'),
+        textOutput("prediction_analysis")
       )
     )
   )
