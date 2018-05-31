@@ -96,7 +96,8 @@ ui_3 <- navbarPage("GDP",
           selectInput("countryName", "Select a country",  choices)
         ),
         mainPanel(
-          plotlyOutput("linePlot")
+          plotlyOutput("linePlot"),
+          textOutput("comparison_analysis")
         )
       )
     )

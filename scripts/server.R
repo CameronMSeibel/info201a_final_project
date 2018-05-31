@@ -42,4 +42,12 @@ to reveal trends in geography and speed of development. The projections show a c
     development. You may mouse over countries to view information about their current status of
     development, either developed or developing, and their GDP per capita."
   })
+  
+  output$comparison_analysis <- renderText({
+    paste(
+      "The above plot compares the trend of GDP per capita over time of",
+      input$countryName,
+      "with the United States. Other countries can be selected on the panel to the left."
+    )
+  })
 })
