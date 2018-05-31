@@ -8,8 +8,8 @@ library(nnet)
 # Be sure working directory is set to source file location.
 source("common.R")
 
-gdp <- read.csv("../data/input/gdp_per_capita.csv")
-le <- read.csv("../data/input/total_life_expectancy.csv")
+gdp <- read.csv("data/input/gdp_per_capita.csv")
+le <- read.csv("data/input/total_life_expectancy.csv")
 
 gdp_estimate <- read.csv("../data/output/gdp_estimates.csv", stringsAsFactors = F)
 le_estimate <- read.csv("../data/output/life_expectancy_estimates.csv", stringsAsFactors = F)

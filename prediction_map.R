@@ -9,7 +9,7 @@ library(maps)
 make_prediction_map <- function(year_of_interest)
 {
   # Year is input from sliders
-  prediction_data <- read.csv("../data/output/development_classifications.csv", stringsAsFactors = FALSE)
+  prediction_data <- read.csv("data/output/development_classifications.csv", stringsAsFactors = FALSE)
   prediction_data <- prediction_data %>% filter(year == year_of_interest) %>% select(-X, -year)
   prediction_data <- data.frame(t(prediction_data))
   colnames(prediction_data) <- "development"

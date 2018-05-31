@@ -5,7 +5,7 @@ library("plotly")
 
 source("common.R")
 
-gdp <- read.csv("../data/input/gdp_per_capita.csv")
+gdp <- read.csv("data/input/gdp_per_capita.csv")
 
 gdp <- gdp %>% mutate(category = sapply(Country.Name, initial_classification))
 

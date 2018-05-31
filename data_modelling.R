@@ -7,8 +7,8 @@
 # Ensure that the working directory is properly set!
 source("common.R")
 
-gdp <- read.csv("../data/input/gdp_per_capita.csv", stringsAsFactors = F)
-le <- read.csv("../data/input/total_life_expectancy.csv", stringsAsFactors = F)
+gdp <- read.csv("data/input/gdp_per_capita.csv", stringsAsFactors = F)
+le <- read.csv("data/input/total_life_expectancy.csv", stringsAsFactors = F)
 
 countries <- gdp$Country.Name
 gdp_output <- data.frame("year" = estimate_range)
@@ -51,6 +51,6 @@ for(country in countries){
 }
 
 # Write results to output
-write.csv(gdp_output, "../data/output/gdp_estimates.csv")
-write.csv(le_output, "../data/output/life_expectancy_estimates.csv")
-write.csv(black_list, "../data/output/unrepresented_countries.csv")
+write.csv(gdp_output, "data/output/gdp_estimates.csv")
+write.csv(le_output, "data/output/life_expectancy_estimates.csv")
+write.csv(black_list, "data/output/unrepresented_countries.csv")
