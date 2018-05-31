@@ -11,7 +11,8 @@ shinyUI(fluidPage(
   # Sidebar with a selector to choose a country
   sidebarLayout(
     sidebarPanel(
-      selectInput("countryName", "Select a country",  choices)
+      selectInput("countryName", "Select a country",  choices),
+      sliderInput("year", "Year", 2019:2119)
     ),
     
     # Show a plot of the generated distribution
