@@ -3,27 +3,36 @@ library(ggplot2)
 library(maps)
 
 
-make_map <- function(predictions)
+make_prediction_map <- function(year_of_interest)
 {
-  map_data <- map_data("world")
-  View(map_data)
-  map_data <- left_join(map_data, data, by = c("region" = "country"))
+  prediction_data <- read.csv("../data/output/development_classifications.csv", stringsAsFactors = FALSE)
+  prediction_data <- prediction_data %>% filter(year == year_of_interest) %>% select(-X, -year)
+  prediction_data <- data.frame(t(prediction_data))
+  colnames(prediction_data) <- "development"
+  prediction_data <- prediction_data %>% mutate(country = rownames(prediction_data))
+  prediction_data$country <- gsub('_Classification', '', prediction_data$country)
+  prediction_data$country <- gsub('_', ' ', prediction_data$country)
+  prediction_data <- fix_country_names(prediction_data)
   
-prediction_map <- ggplot(data = map_data) +
-  geom_polygon(mapping = aes(x=long, y = lat, group = group, fill = t.data.), color = "lightgray") +
-  scale_fill_manual(values=c("#b30000", "#fef0d9")) +
-  labs(
-    title = "CO2 Emissions by Country (metric tons per capita, 2014)", 
-    fill = "CO2 Emission Level"
-  ) +
-  theme(
-    axis.title.x=element_blank(),
-    axis.text.x=element_blank(),
-    axis.ticks.x=element_blank(),
-    axis.title.y=element_blank(),
-    axis.text.y=element_blank(),
-    axis.ticks.y=element_blank()
-  )
+
+  map_data <- map_data("world")
+  map_data <- left_join(map_data, prediction_data, by = c("region" = "country"))
+  
+  prediction_map <- ggplot(data = map_data) +
+    geom_polygon(mapping = aes(x=long, y = lat, group = group, fill = development), color = "lightgray") +
+    scale_fill_manual(values=c("#b30000", "#fef0d9")) +
+    labs(
+      title = paste0("World Development Level in ", year_of_interest), 
+      fill = "Develpoment Level"
+    ) +
+    theme(
+      axis.title.x=element_blank(),
+      axis.text.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank(),
+      axis.text.y=element_blank(),
+      axis.ticks.y=element_blank()
+    )
 
 return(prediction_map)
 }
