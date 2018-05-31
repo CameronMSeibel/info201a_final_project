@@ -22,7 +22,7 @@ make_prediction_map <- function(year_of_interest)
     geom_polygon(mapping = aes(x=long, y = lat, group = group, fill = development), color = "lightgray") +
     scale_fill_manual(values=c("#b30000", "#fef0d9")) +
     labs(
-      title = paste0("World Development Level in ", year_of_interest), 
+      title = paste0("World Development Level in ", year_of_interest, " (Prediction)"), 
       fill = "Develpoment Level"
     ) +
     theme(
@@ -31,7 +31,8 @@ make_prediction_map <- function(year_of_interest)
       axis.ticks.x=element_blank(),
       axis.title.y=element_blank(),
       axis.text.y=element_blank(),
-      axis.ticks.y=element_blank()
+      axis.ticks.y=element_blank(),
+      plot.title = element_text(hjust = 0.5)
     )
 
 return(prediction_map)

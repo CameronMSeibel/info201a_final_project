@@ -17,4 +17,8 @@ shinyServer(function(input, output) {
     compare.gdp(input$countryName)
   })
   
+  
+  output$introduction <- renderText({
+    "balabala"
+  })
 })

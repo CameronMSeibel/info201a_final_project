@@ -45,7 +45,7 @@ compare.gdp <- function(other_country){
   p <- plot_ly(gdp, x = ~years, y = ~usa_data, name = 'United States', type = 'scatter', mode = 'lines',
                line = list(color = 'rgb(205, 12, 24)', width = 2)) %>%
     add_trace(y = ~other_country_data, name = ~other_country, line = list(color = 'rgb(22, 96, 167)', width = 2))  %>% 
-    layout(title = paste("Comparison of GDP/capita between United States and", other_country),
+    layout(title = paste("Comparison of GDP/capita between <br>United States and", other_country),
            xaxis = list(title = "Years"),
            yaxis = list(title = "GDP/capita", nticks = 10, tickformat = ',d'))
   p
